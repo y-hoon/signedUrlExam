@@ -24,11 +24,11 @@ public class CloudFrontManager {
      * openssl pkcs8 -topk8 -nocrypt -in origin.pem -inform PEM -out new.der -outform DER
      */
 
-    private final String distributionDomain = "distribution_Domain";
-    private final String privateKeyFilePath = "der 파일 위치";
-    private final String s3ObjectKey = "1.png";
-    private final String policyResourcePath = "http://" + distributionDomain + "/" + s3ObjectKey;
-    private final String keyPairId = ""; // CF KeyPair Id
+    private final String distributionDomain = "cloudfrontdomain";
+    private final String privateKeyFilePath = "keyFile";
+    private final String s3ObjectKey = "s3Object";
+    private final String policyResourcePath = "https://" + distributionDomain + "/" + s3ObjectKey;
+    private final String keyPairId = "keyPairId"; // CF KeyPair Id
 
     private byte[] derPrivateKey;
 
@@ -44,7 +44,7 @@ public class CloudFrontManager {
                 policyResourcePath, // Resource URL or Path
                 keyPairId,     // Certificate identifier,
                 derPrivateKey, // DER Private key data
-                ServiceUtils.parseIso8601Date("2020-11-14T22:20:00.000Z") // DateLessThan
+                ServiceUtils.parseIso8601Date("2021-07-27T09:00:00.000Z") // DateLessThan
         );
         log.info("Signed Url Canned ====================== {} =========================", signedUrlCanned);
 
